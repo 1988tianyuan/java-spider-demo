@@ -43,7 +43,6 @@ public class ZhihuSearchImageParser extends NonPageParser {
 	@Override
 	public void parse(String url, String source) {
 		ZhihuApiResponse response = JSON.parseObject(source, ZhihuApiResponse.class);
-		log.info("当前url:{} 已被成功解析", url);
 		boolean isEnd = response.getPaging().is_end();
 		String nextUrl = response.getPaging().getNext();
 		if (!isEnd && RegexUtils.isHttpUrl(nextUrl)) {

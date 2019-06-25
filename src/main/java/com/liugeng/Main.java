@@ -44,5 +44,9 @@ public class Main {
 			.build();
 		crawler.start(true);
 		threadPool.awaitTermination(Integer.MAX_VALUE, TimeUnit.MILLISECONDS);
+		Runtime.getRuntime().addShutdownHook(new Thread(() -> {
+			threadPool.shutdown();
+			crawler.stop();
+		}));
 	}
 }
