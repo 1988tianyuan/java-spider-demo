@@ -31,6 +31,8 @@ public class Main {
 	
 	public static void main(String[] args) throws Exception {
 		String fileBasePath = args[1];
+		String searchWords = args[0];
+		Preconditions.checkNotNull(searchWords, "searchWords should not be null!");
 		Map<String, String> searchParams = ZhihuSpiderUtils.buildParams(args[0], 20, 0);
 		RunData runData = new LocalRunData();
 		ExecutorService threadPool = Executors.newWorkStealingPool(50);
